@@ -1,8 +1,8 @@
 example0.py
 Explain what it does. What do the different lines do?
 
-
-
+import time
+    importing the time module which has many functions including pausing time, measuring time, finding the current tib
 
 
 example1.py

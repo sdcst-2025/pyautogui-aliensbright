@@ -33,6 +33,7 @@ appropriate use of return values and input parameters
 # assignment.
 
 while True:
+    print('hi')
     y = keyboard.read_key()
     print(y)
     print(time.now())
