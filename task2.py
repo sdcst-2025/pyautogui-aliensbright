@@ -36,7 +36,7 @@ while True:
     print('hi')
     y = keyboard.read_key()
     print(y)
-    print(time.now())
+    print(time.time())
     t = time.localtime()
     print(t)
     print(time.strftime("%H",t))
