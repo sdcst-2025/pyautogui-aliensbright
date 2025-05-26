@@ -2,40 +2,40 @@
 import time
 import pyautogui
 
+print('Please get the game open and onto the main screen.')
 time.sleep(2) #allows user to get the game open
 
-pyautogui.locateCenterOnScreen()
 
 def getmidCoords():#returns the planet coords
-    x,y=pyautogui.locateCenterOnScreen('assets/collection.png', confidence=.7)
-    x=x+144
-    y=y+106
+    x,y=pyautogui.locateCenterOnScreen('assets/clicky.png', confidence=.7)
+    x +=100
+    y+=100
     pyautogui.moveTo(x,y)
     return x,y
+
 
 def maintask(xcoord,ycoord,timelimit): #pressing down on the middle of the planet
     startTime=time.time()
     newtime=0
     while newtime-startTime<timelimit:
         pyautogui.moveTo(xcoord,ycoord)
-        pyautogui.mouseDown()
-        time.sleep(1)
+        mouseAutoclickThing()
         newtime=time.time()
 
-
-def start(): #gets to the main screen
-    try:
-        pyautogui.moveTo(pyautogui.locateCenterOnScreen('assets/rungame.png'))
-        pyautogui.click(clicks=2,interval=0.5)
-        time.sleep(4)
-    except:
-        try:
-            pyautogui.moveTo(pyautogui.locateCenterOnScreen('assets/sleep.png',confidence=0.8))
-            pyautogui.click(clicks=2,interval=0.5)
-            time.sleep(1)
-        except:
-            pass
-
+"""
+#def start(): #gets to the main screen
+#    try:
+#        pyautogui.moveTo(pyautogui.locateCenterOnScreen('assets/rungame.png'))
+#        pyautogui.click(clicks=2,interval=0.5)
+#        time.sleep(4)
+#    except:
+#        try:
+#            pyautogui.moveTo(pyautogui.locateCenterOnScreen('assets/sleep.png',confidence=0.8))
+#            pyautogui.click(clicks=2,interval=0.5)
+#            time.sleep(1)
+#        except:
+#            pass
+#
 
 def sidetask1(): #goes to the shop on the bottom of the screen.
 
@@ -64,7 +64,6 @@ def sidetask1(): #goes to the shop on the bottom of the screen.
 #    pyautogui.moveTo(pyautogui.locateCenterOnScreen('assets/xmarks.png',confidence=0.9))
 #    pyautogui.click(2,duration=0.5)
 
-
 def sidetask2(): #collects gems from the collection tab
     n=True
     while n==True:
@@ -88,23 +87,25 @@ def sidetask2(): #collects gems from the collection tab
             pyautogui.moveTo(pyautogui.locateCenterOnScreen('assets/book.png',confidence=0.9))
             print(pyautogui.locateCenterOnScreen('assets/book.png',confidence=0.9))
             pyautogui.click()
+"""
 
 
-
-def mousething():
-    pyautogui.mouseDown()
-    pyautogui.mouseUp()
+def mouseAutoclickThing():
+    for i in range(2000):
+        pyautogui.mouseDown()
+        pyautogui.mouseUp()
+        time.sleep(0.01)
 
 
 #sidetask3()
 def main():
-    start()
     x,y=getmidCoords()
     while True:
-        for q in range(3):
-            maintask(x,y,20)
-            sidetask1()
-        sidetask2()
+        maintask(x,y,20)
+    # for q in range(3):
+    #        maintask(x,y,20)
+    #        sidetask1()
+    #    sidetask2()
     
 
 main()
