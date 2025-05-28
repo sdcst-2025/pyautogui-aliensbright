@@ -2,7 +2,7 @@
 import time
 import pyautogui
 
-print('Please get the game open and onto the main screen.')
+print('Please get the game open and onto the main screen.\n Website: https://www.crazygames.com/game/duck-duck-clicker-ixu')
 time.sleep(2) #allows user to get the game open
 
 
