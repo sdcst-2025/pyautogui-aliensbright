@@ -2,17 +2,34 @@
 import time
 import pyautogui
 
-print('Please get the game open and onto the main screen.\n Website: https://www.crazygames.com/game/duck-duck-clicker-ixu')
+print('Please get the game open and onto the main screen.\nWebsite: https://www.crazygames.com/game/duck-duck-clicker-ixu')
 time.sleep(2) #allows user to get the game open
 
+def startGame():
+    try:
+        x,y=pyautogui.locateCenterOnScreen('assets/playnow.png', confidence=.8)
+        pyautogui.moveTo(x,y)
+        pyautogui.mouseDown()
+        pyautogui.mouseUp()
+        print('Game Started.')
+    except:
+        print('Play Now button not detected,\nplease ensure that the game has loaded.')
+    try:
+        x,y=pyautogui.locateCenterOnScreen('assets/fullscreen.png', confidence=.8)
+        pyautogui.moveTo(x,y)
+        pyautogui.mouseDown()
+        pyautogui.mouseUp()
+        print('Game in FullScreen')
+    except:
+        print('Fullscreen button not detected,\nplease ensure that the game has loaded.')
 
 def getmidCoords():#returns the planet coords
+    time.sleep(0.5)
     x,y=pyautogui.locateCenterOnScreen('assets/clicky.png', confidence=.7)
     x +=100
     y+=100
     pyautogui.moveTo(x,y)
     return x,y
-
 
 def maintask(xcoord,ycoord,timelimit): #pressing down on the middle of the planet
     startTime=time.time()
@@ -91,21 +108,18 @@ def sidetask2(): #collects gems from the collection tab
 
 
 def mouseAutoclickThing():
-    for i in range(2000):
+    for i in range(10):
         pyautogui.mouseDown()
         pyautogui.mouseUp()
-        time.sleep(0.01)
 
 
 #sidetask3()
 def main():
+    startGame()
     x,y=getmidCoords()
-    while True:
-        maintask(x,y,20)
-    # for q in range(3):
-    #        maintask(x,y,20)
-    #        sidetask1()
-    #    sidetask2()
+ #   while True:
+    maintask(x,y,23)
+        
     
 
 main()
