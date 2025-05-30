@@ -39,7 +39,7 @@ def maintask(xcoord,ycoord,timelimit): #pressing down on the middle of the plane
         mouseAutoclickThing()
         newtime=time.time()
 
-"""
+""" 
 #def start(): #gets to the main screen
 #    try:
 #        pyautogui.moveTo(pyautogui.locateCenterOnScreen('assets/rungame.png'))
@@ -95,31 +95,5 @@ def sidetask2(): #collects gems from the collection tab
             for i in range(6):
                 if i==0:
                     try:
-                        pyautogui.locateCenterOnScreen('assets/gems.png',region=(x,y-100,300,500),confidence=0.9)
-                    except:
-                        n=False
-                pyautogui.moveTo(pyautogui.locateCenterOnScreen('assets/gems.png',region=(x,y-100,300,500),confidence=0.9))
-                pyautogui.click(clicks=2,duration=0.2)
-        except:
-            pyautogui.moveTo(pyautogui.locateCenterOnScreen('assets/book.png',confidence=0.9))
-            print(pyautogui.locateCenterOnScreen('assets/book.png',confidence=0.9))
-            pyautogui.click()
-"""
-
-
-def mouseAutoclickThing():
-    for i in range(10):
-        pyautogui.mouseDown()
-        pyautogui.mouseUp()
-
-
-#sidetask3()
-def main():
-    startGame()
-    x,y=getmidCoords()
- #   while True:
-    maintask(x,y,23)
-        
-    
-
-main()
+                        pyautogui.locateC nterOnScreen('assets/gems.png',region=(x,y-100,300,500),confidence=0.9)
+                    except:           """
