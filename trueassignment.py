@@ -11,8 +11,10 @@ def startGame():
         pyautogui.moveTo(x,y)
         pyautogui.leftClick()
         print('Game Started.')
+        time.sleep(1)
     except:
         print('Play Now button not detected,\nplease ensure that the game has loaded.')
+        time.sleep(1)
     try:
         x,y=pyautogui.locateCenterOnScreen('assets/fullscreen.png', confidence=.8)
         pyautogui.moveTo(x,y)
@@ -39,6 +41,7 @@ def getmidCoords():#returns the planet coords
         pyautogui.moveTo(x,y)
         return x,y
     except:
+        pyautogui.
         print('Game not located,\nplease rerun program.')
         return False,False
 
@@ -51,45 +54,55 @@ def maintask(xcoord,ycoord,timelimit): #pressing down on the middle of the plane
             pyautogui.leftClick()
         newtime=time.time()
 
-def task1():
+def task1(timelimit):
     try:
         startTime=time.time()
         newtime=0
-        while newtime-startTime<10:
+        while newtime-startTime<timelimit:
             x,y = pyautogui.locateCenterOnScreen('assets/task1.png',confidence=0.9)
             pyautogui.moveTo(x,y)
             for i in range(20):
                 pyautogui.leftClick()
-            print('hi')
             newtime=time.time()
     except:
         pass
 
-def task2():
+def task2(timelimit):
     try:
-        while True:
-            x,y = pyautogui.locateCenterOnScreen('assets/task2.png',confidence=0.8)
+        startTime=time.time()
+        newtime=0
+        while newtime-startTime<timelimit:
+            x,y = pyautogui.locateCenterOnScreen('assets/task2.png',confidence=0.9)
             pyautogui.moveTo(x,y)
             for i in range(20):
                 pyautogui.leftClick()
+            newtime=time.time()
     except:
         pass
 
-def mouseAutoclickThing(x,y):
-    pyautogui.moveTo(x,y)
-    pyautogui.mouseDown()
-    pyautogui.mouseUp()
+def scrollDown():
+    try:
+        a,b = pyautogui.locateCenterOnScreen('assets/scrolldown.png',confidence=0.9)
+        pyautogui.moveTo(a,b)
+        pyautogui.dragTo(a,y=b+100,duration=1,button='left')
+    except:
+        pass
 
 def main():
     try:
         startGame()
         x,y = getmidCoords()
-        while True:
-            maintask(x,y,15)
-            task1()
-            maintask(x,y,15)
-            task2()
+        tLimit=1
+#        for i in range(4):
+#            maintask(x,y,15)
+#            task1(tLimit)
+#            maintask(x,y,15)
+#            task2(tLimit)
+#            tLimit+=1
+        scrollDown()
+        
+        
     except:
-        pass
+        print('Game not run\nor game exited.\nPlease rerun code with game open.')
 
 main()
