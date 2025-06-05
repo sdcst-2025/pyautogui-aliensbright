@@ -19,7 +19,15 @@ def startGame():
         pyautogui.leftClick()
         print('Game in FullScreen')
     except:
-        print('Fullscreen button not detected,\nplease ensure that the game has loaded.')
+        print('Ad Playing\nPlease wait 15 seconds')
+        time.sleep(16)
+        try:
+            x,y=pyautogui.locateCenterOnScreen('assets/fullscreen.png', confidence=.8)
+            pyautogui.moveTo(x,y)
+            pyautogui.leftClick()
+            print('Game in FullScreen')
+        except:
+            print('Fullscreen button not detected,\nplease ensure that the game has loaded.')
     time.sleep(1)
 
 def getmidCoords():#returns the planet coords
@@ -39,7 +47,8 @@ def maintask(xcoord,ycoord,timelimit): #pressing down on the middle of the plane
     newtime=0
     pyautogui.moveTo(xcoord,ycoord)   
     while newtime-startTime<timelimit:
-        pyautogui.leftClick()
+        for i in range(20):
+            pyautogui.leftClick()
         newtime=time.time()
 
 def task1():
