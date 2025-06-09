@@ -15,6 +15,7 @@ def startGame():
     except:
         print('Play Now button not detected,\nplease ensure that the game has loaded.')
         time.sleep(1)
+    
     try:
         x,y=pyautogui.locateCenterOnScreen('assets/fullscreen.png', confidence=.8)
         pyautogui.moveTo(x,y)
@@ -41,7 +42,7 @@ def getmidCoords():#returns the planet coords
         pyautogui.moveTo(x,y)
         return x,y
     except:
-        pyautogui.
+        
         print('Game not located,\nplease rerun program.')
         return False,False
 
@@ -80,6 +81,32 @@ def task2(timelimit):
     except:
         pass
 
+def task3(timelimit):
+    try:
+        startTime=time.time()
+        newtime=0
+        while newtime-startTime<timelimit:
+            x,y = pyautogui.locateCenterOnScreen('assets/task3.png',confidence=0.8)
+            pyautogui.moveTo(x,y)
+            for i in range(20):
+                pyautogui.leftClick()
+            newtime=time.time()
+    except:
+        print('hi Test 112')
+
+"""def task4(timelimit):
+    try:
+        startTime=time.time()
+        newtime=0
+        while newtime-startTime<timelimit:
+            x,y = pyautogui.locateCenterOnScreen('assets/task4.png',confidence=0.9)
+            pyautogui.moveTo(x,y)
+            for i in range(20):
+                pyautogui.leftClick()
+            newtime=time.time()
+    except:
+        pass"""
+
 def scrollDown():
     try:
         a,b = pyautogui.locateCenterOnScreen('assets/scrolldown.png',confidence=0.9)
@@ -92,15 +119,20 @@ def main():
     try:
         startGame()
         x,y = getmidCoords()
-        tLimit=1
-#        for i in range(4):
-#            maintask(x,y,15)
-#            task1(tLimit)
-#            maintask(x,y,15)
-#            task2(tLimit)
-#            tLimit+=1
+        tLimit=10
+        #for i in range(4):
+        #    maintask(x,y,15)
+        #    task1(tLimit)
+        #    maintask(x,y,15)
+        #    task2(tLimit)
+        #    tLimit+=1
         scrollDown()
-        
+        for i in range(4):
+            maintask(x,y,15)
+            task3(tLimit)
+            maintask(x,y,15)
+            #task4(tLimit)
+
         
     except:
         print('Game not run\nor game exited.\nPlease rerun code with game open.')
