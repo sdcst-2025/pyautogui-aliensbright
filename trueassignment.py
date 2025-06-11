@@ -42,7 +42,6 @@ def getmidCoords():#returns the planet coords
         pyautogui.moveTo(x,y)
         return x,y
     except:
-        
         print('Game not located,\nplease rerun program.')
         return False,False
 
@@ -94,7 +93,7 @@ def task3(timelimit):
     except:
         print('hi Test 112')
 
-"""def task4(timelimit):
+def task4(timelimit):
     try:
         startTime=time.time()
         newtime=0
@@ -105,33 +104,46 @@ def task3(timelimit):
                 pyautogui.leftClick()
             newtime=time.time()
     except:
-        pass"""
+        pass
 
 def scrollDown():
     try:
         a,b = pyautogui.locateCenterOnScreen('assets/scrolldown.png',confidence=0.9)
         pyautogui.moveTo(a,b)
         pyautogui.dragTo(a,y=b+100,duration=1,button='left')
+        return a,b
+    except:
+        return False,False
+
+def scrollUp(a,b):
+    try:
+        pyautogui.moveTo(a,y=b+100)
+        pyautogui.dragTo(a,b,duration=1,button='left')
     except:
         pass
+
+def changeOutfit():
+    pass
 
 def main():
     try:
         startGame()
         x,y = getmidCoords()
-        tLimit=10
-        #for i in range(4):
-        #    maintask(x,y,15)
-        #    task1(tLimit)
-        #    maintask(x,y,15)
-        #    task2(tLimit)
-        #    tLimit+=1
-        scrollDown()
-        for i in range(4):
-            maintask(x,y,15)
-            task3(tLimit)
-            maintask(x,y,15)
-            #task4(tLimit)
+        while True:
+            tLimit=10
+            for i in range(4):
+                maintask(x,y,15)
+                task1(tLimit)
+                maintask(x,y,15)
+                task2(tLimit)
+                tLimit+=1
+            scrollX,scrollY = scrollDown()
+            for i in range(2):
+                maintask(x,y,15)
+                task3(tLimit)
+                maintask(x,y,15)
+                task4(5)
+            scrollUp(scrollX,scrollY)
 
         
     except:
