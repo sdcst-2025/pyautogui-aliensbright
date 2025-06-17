@@ -15,7 +15,7 @@ def startGame():
     except:
         print('Play Now button not detected,\nplease ensure that the game has loaded.')
         time.sleep(1)
-    
+
     try:
         x,y=pyautogui.locateCenterOnScreen('assets/fullscreen.png', confidence=.8)
         pyautogui.moveTo(x,y)
